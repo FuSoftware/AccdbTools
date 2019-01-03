@@ -33,9 +33,8 @@ namespace AccdbTools.ACCDB.Generic
             {
                 //Load Jet4
                 f = new Jet4File(data);
-                f.Format = Format;
             }
-
+			f.Format = Format;
             return f;
         }
     }
