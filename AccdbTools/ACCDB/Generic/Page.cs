@@ -6,17 +6,21 @@ using System.Threading.Tasks;
 
 namespace AccdbTools.ACCDB.Generic
 {
-    enum PageType
+    public enum PageType
     {
         Header = 0x0100,
         Data = 0x0101,
         TableDefinition = 0x0102,
-        Unknown1 = 0x0103,
-        Unknown2 = 0x0104,
+        IntermediateIndex = 0x0103,
+        LeafIndex = 0x0104,
+		PageUsageBitmaps = 0x0105,
+        Unknown1 = 0x0108,
     }
 
-    class Page
+    public class Page
     {
+        public PageType PageSignature { get; set; }
+
         public Page()
         {
 

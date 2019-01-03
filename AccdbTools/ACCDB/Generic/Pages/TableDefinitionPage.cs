@@ -50,7 +50,14 @@ namespace AccdbTools.ACCDB.Generic.Pages
 
     class Index
     {
-        
+        public string Name { get; set; }
+        public uint IndexNumber { get; set; }
+        public uint IndexColumnNumber { get; set; }
+        public byte C2 { get; set; }
+        public uint C3 { get; set; }
+        public uint C4 { get; set; }
+        public ushort C5 { get; set; }
+        public byte IndexType { get; set; }
     }
 
     class RealIndex
@@ -75,18 +82,19 @@ namespace AccdbTools.ACCDB.Generic.Pages
 
     class Column
     {
-        ColumnType Type;
-        ushort ColumnId;
-        ushort VariableColumnNumber;
-        ushort ColumnFlags;
-        ushort FixedOffset;
-        ushort Length;
-        string Name;
+        public ColumnType Type { get; set; }
+        public ushort ColumnId { get; set; }
+        public ushort VariableColumnNumber { get; set; }
+        public ushort ColumnIndex { get; set; }
+        public ushort ColumnFlags { get; set; }
+        public ushort FixedOffset { get; set; }
+        public ushort Length { get; set; }
+        public string Name { get; set; }
+        public List<uint> Args = new List<uint>();
     }
 
     class TableDefinitionPage : Page
     {
-        public ushort PageSignature { get; set; }
         public uint NextPage { get; set; }
         public ulong Length { get; set; }
         public ulong Rows { get; set; }
@@ -100,6 +108,8 @@ namespace AccdbTools.ACCDB.Generic.Pages
         public ulong RealIndexCount { get; set; }
         public ulong RowPageMap { get; set; }
         public ulong FreeSpacePageMap { get; set; }
+
+        public List<Column> Columns { get; set; }
 
         public TableDefinitionPage(byte[] pageData)
         {

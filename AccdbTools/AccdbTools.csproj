@@ -58,15 +58,22 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ACCDB\Generic\JetFile.cs" />
+    <Compile Include="ACCDB\Generic\JetFileLoader.cs" />
+    <Compile Include="ACCDB\Generic\Pages\DataPage.cs" />
+    <Compile Include="ACCDB\Generic\Pages\PlaceHolderPage.cs" />
     <Compile Include="ACCDB\Generic\Pages\TableDefinitionPage.cs" />
+    <Compile Include="ACCDB\Jet3\Jet3File.cs" />
     <Compile Include="ACCDB\Jet3\Pages\Jet3TableDefinitionPage.cs" />
+    <Compile Include="ACCDB\Jet4\Jet4File.cs" />
+    <Compile Include="ACCDB\Jet4\Pages\Jet4DataPage.cs" />
     <Compile Include="ACCDB\Jet4\Pages\Jet4TableDefinitionPage.cs" />
+    <Compile Include="Database\Database.cs" />
     <Compile Include="Utils\RC4.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Compile Include="ACCDB\AccdbFile.cs" />
     <Compile Include="ACCDB\Generic\FileFormat.cs" />
     <Compile Include="ACCDB\Generic\Header.cs" />
     <Compile Include="ACCDB\Generic\Page.cs" />

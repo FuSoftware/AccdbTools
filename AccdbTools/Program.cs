@@ -1,4 +1,5 @@
 ﻿using AccdbTools.ACCDB;
+using AccdbTools.ACCDB.Generic;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +12,7 @@ namespace AccdbTools
     {
         public static void Main()
         {
-            AccdbFile f = new AccdbFile(@"D:\A.accdb");
+            JetFile f = JetFileLoader.LoadFile(@"D:\Database1.accdb");
             Console.ReadLine();
         }
     }
