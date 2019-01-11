@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AccdbTools.Database;
 
 namespace AccdbTools
 {
@@ -12,7 +13,9 @@ namespace AccdbTools
     {
         public static void Main()
         {
-            JetFile f = JetFileLoader.LoadFile(@"D:\Database1.accdb");
+            JetFile f = JetFileLoader.LoadFile(@"D:\LLIC3_AMRA.accdb");
+            Database.Database d = new Database.Database(f);
+            d.Load();
             Console.ReadLine();
         }
     }

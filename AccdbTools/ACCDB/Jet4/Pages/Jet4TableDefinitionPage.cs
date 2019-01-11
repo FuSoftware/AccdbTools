@@ -124,15 +124,19 @@ namespace AccdbTools.ACCDB.Jet4.Pages
         public ulong AutonumberIncrement { get; set; }
         public ulong ComplexAutonumber { get; set; }
 
-        public Jet4TableDefinitionPage(byte[] pageData) : base(pageData)
+        public Jet4TableDefinitionPage(byte[] data) : base(data)
         {
-            this.Load(pageData);
+
         }
 
-        public void Load(byte[] pageData)
+        public override void LoadHeader(byte[] pageData)
         {
             this.PageSignature = (PageType)BitConverter.ToUInt16(pageData, 0);
             this.NextPage = BitConverter.ToUInt32(pageData, 4);
+        }
+
+        public override void Load(byte[] pageData)
+        {
             this.Length = BitConverter.ToUInt32(pageData, 8);
             this.Rows = BitConverter.ToUInt32(pageData, 16);
             this.Autonumber = BitConverter.ToUInt32(pageData, 20);
@@ -146,6 +150,8 @@ namespace AccdbTools.ACCDB.Jet4.Pages
             this.RealIndexCount = BitConverter.ToUInt32(pageData, 51);
             this.RowPageMap = BitConverter.ToUInt32(pageData, 55);
             this.FreeSpacePageMap = BitConverter.ToUInt32(pageData, 59);
+
+            Console.WriteLine(this.NextPage);
 
             List<Jet4RealIndex> RealIndexes = new List<Jet4RealIndex>();
             List<Jet4Index> Indexes = new List<Jet4Index>();

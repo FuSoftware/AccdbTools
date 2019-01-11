@@ -31,7 +31,7 @@ namespace AccdbTools.ACCDB.Jet3
                 case (ushort)PageType.Data:
                     //return new Pages.Jet3DataPage(data.Skip(index * PageLength).Take(PageLength).ToArray());
                 default:
-                    return new PlaceHolderPage(type);
+                    return new PlaceHolderPage(type, data.Skip(index * PageLength).Take(PageLength).ToArray());
             }
         }
     }

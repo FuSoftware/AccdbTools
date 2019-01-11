@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -11,7 +12,7 @@ namespace AccdbTools.ACCDB.Generic
     {
         public FileFormat Format { get; set; }
         public Header Header { get; set; }
-        public List<Page> Pages { get; set; }
+        public Page[] Pages { get; set; }
         public int PageLength { get => 4096; }
 
         public JetFile()
@@ -30,12 +31,20 @@ namespace AccdbTools.ACCDB.Generic
             this.Pages = LoadPages(data);
         }
 
-        public List<Page> LoadPages(byte[] data)
+        public Page[] LoadPages(byte[] data)
         {
-            List<Page> pages = new List<Page>();
-            for (int i = 1; i < data.Length / this.PageLength; i++)
+            int PageCount = data.Length / this.PageLength;
+            Page[] pages = new Page[PageCount];
+
+            Console.WriteLine("Loading {0} pages", PageCount);
+
+            Stopwatch sw = new Stopwatch();
+            for (int i = 1; i < PageCount; i++)
             {
-                pages.Add(LoadPage(data, i));
+                sw.Restart();
+                pages[i] = LoadPage(data, i);
+                sw.Stop();
+                Console.WriteLine("Loaded Page {1} in {0}ms", sw.ElapsedMilliseconds, i);
             }
             return pages;
         }

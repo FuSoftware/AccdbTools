@@ -63,12 +63,16 @@
     <Compile Include="ACCDB\Generic\Pages\DataPage.cs" />
     <Compile Include="ACCDB\Generic\Pages\PlaceHolderPage.cs" />
     <Compile Include="ACCDB\Generic\Pages\TableDefinitionPage.cs" />
+    <Compile Include="ACCDB\Generic\Record.cs" />
     <Compile Include="ACCDB\Jet3\Jet3File.cs" />
     <Compile Include="ACCDB\Jet3\Pages\Jet3TableDefinitionPage.cs" />
     <Compile Include="ACCDB\Jet4\Jet4File.cs" />
     <Compile Include="ACCDB\Jet4\Pages\Jet4DataPage.cs" />
     <Compile Include="ACCDB\Jet4\Pages\Jet4TableDefinitionPage.cs" />
     <Compile Include="Database\Database.cs" />
+    <Compile Include="Database\Form.cs" />
+    <Compile Include="Database\Record.cs" />
+    <Compile Include="Database\Table.cs" />
     <Compile Include="Utils\RC4.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>

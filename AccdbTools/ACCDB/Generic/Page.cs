@@ -20,10 +20,36 @@ namespace AccdbTools.ACCDB.Generic
     public class Page
     {
         public PageType PageSignature { get; set; }
+        public byte[] PageData { get; set; }
 
-        public Page()
+        public Page(byte[] data)
+        {
+            this.PageData = data;
+        }
+
+        public void LoadHeader()
+        {
+            this.LoadHeader(this.PageData);
+        }
+
+        public virtual void LoadHeader(byte[] data)
         {
 
+        }
+
+        public void Load()
+        {
+            this.Load(this.PageData);
+        }
+
+        public virtual void Load(byte[] data)
+        {
+
+        }
+
+        public void ClearData()
+        {
+            this.PageData = new byte[0];
         }
 
         public static ushort DataPageType(byte[] fileData, int pageIndex, int pageLength = 4096)

@@ -111,14 +111,18 @@ namespace AccdbTools.ACCDB.Generic.Pages
 
         public List<Column> Columns { get; set; }
 
-        public TableDefinitionPage(byte[] pageData)
+        public byte[] Data { get => this.PageData.Skip(8).ToArray(); }
+
+        public TableDefinitionPage(byte[] data) : base(data)
         {
-            this.Load(pageData);
+            this.LoadHeader(data);
         }
 
-        void Load(byte[] pageData)
+        public void AppendData(byte[] data)
         {
-
+            List<byte> a = this.PageData.ToList();
+            a.AddRange(data);
+            this.PageData = a.ToArray();
         }
     }
 }

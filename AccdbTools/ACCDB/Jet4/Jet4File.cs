@@ -2,6 +2,7 @@
 using AccdbTools.ACCDB.Generic.Pages;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,8 +22,9 @@ namespace AccdbTools.ACCDB.Jet4
         }
 
         public override Page LoadPage(byte[] data, int index)
-        {
+        {          
             ushort type = Page.DataPageType(data, index, PageLength);
+            Console.WriteLine(type);
 
             switch (type)
             {
@@ -31,7 +33,7 @@ namespace AccdbTools.ACCDB.Jet4
                 case (ushort)PageType.Data:
                     return new Pages.Jet4DataPage(data.Skip(index * PageLength).Take(PageLength).ToArray());
                 default:
-                    return new PlaceHolderPage(type);
+                    return new PlaceHolderPage(type, data.Skip(index * PageLength).Take(PageLength).ToArray());
             }
         }
     }
